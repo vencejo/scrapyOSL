@@ -7,7 +7,7 @@ class ScrapyOslSpider(CrawlSpider):
     name = 'ScrapyOslSpider'
     start_urls = ['http://osl.ugr.es'] # url de inicio de busqueda para la spider
 
-    # Analiza solo los post con estructura http://osl.ugr.es/AAAA/MM/DD/titulo r'\d{4}/\d{2}/\d{2}/^quinto'
+    # Analiza solo los post con estructura http://osl.ugr.es/AAAA/MM/DD/titulo
     rules = [Rule(SgmlLinkExtractor(allow=[r'\d{4}/\d{2}/\d{2}/*']),callback='analizaEntrada')]
     	    
 		

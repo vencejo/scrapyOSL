@@ -29,7 +29,10 @@ class ScrapyOslSpider(CrawlSpider):
 	item['categorias'] =hxs.select("//html/body/div/div[2]/div[2]/div/p/span[1]/a/text()").extract()
 
         # Extrae el contenido
-        item['contenido'] = '...' #hxs.select("//html/body/div/div[2]/div[2]/div/div[2]").extract() 
+	# Para una lectura mas facil de los resultados se ha optado por poner un contenido nulo ('...')
+	# Si , aun así, se quiere guardar los contenidos de las entradas, no hay mas que cambiar los tres puntos por:
+	#hxs.select("//html/body/div/div[2]/div[2]/div/div[2]").extract() 
+        item['contenido'] = '...' 
     
         return item
 
