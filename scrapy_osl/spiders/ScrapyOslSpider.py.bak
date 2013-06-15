@@ -9,28 +9,32 @@ class ScrapyOslSpider(CrawlSpider):
 
     # Analiza solo los post con estructura http://osl.ugr.es/AAAA/MM/DD/titulo
     rules = [Rule(SgmlLinkExtractor(allow=[r'\d{4}/\d{2}/\d{2}/*']),callback='analizaEntrada')]
-
-
+    	    
+		
     def analizaEntrada(self, response):
 
         hxs = HtmlXPathSelector(response)
         item = ScrapyOslItem()
 
-        # Extrae el titulo
+        # Extrae el titulo 
         item['titulo'] = hxs.select('//html/body/div/div[2]/div[2]/div/h1/text()').extract()
 
         # Extrae el autor
-        item['autor'] = hxs.select("//html/body/div/div[2]/div[2]/div/div/address/a/text()").extract()
+        item['autor'] = hxs.select("//html/body/div/div[2]/div[2]/div/div/address/a/text()").extract() 
 
         # Extrae las etiquetas
         item['etiquetas'] = hxs.select("//html/body/div/div[2]/div[2]/div/p/span[2]/a/text()").extract()
 
-        # Extrae las categorias
-        item['categorias'] =hxs.select("//html/body/div/div[2]/div[2]/div/p/span[1]/a/text()").extract()
+	# Extrae las categorias
+	item['categorias'] =hxs.select("//html/body/div/div[2]/div[2]/div/p/span[1]/a/text()").extract()
 
         # Extrae el contenido
-        # Para una lectura mas facil de los resultados se puede optar por poner un contenido nulo ('...')
-       
-        item['contenido'] = hxs.select("//html/body/div/div[2]/div[2]/div/div[2]").extract()
-
+	# Para una lectura mas facil de los resultados se ha optado por poner un contenido nulo ('...')
+	# Si , aun asi, se quiere guardar los contenidos de las entradas, no hay mas que cambiar los tres puntos por:
+	#hxs.select("//html/body/div/div[2]/div[2]/div/div[2]").extract() 
+        item['contenido'] = '...' 
+    
         return item
+
+
+

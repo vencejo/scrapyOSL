@@ -11,7 +11,9 @@ BOT_NAME = 'ScrapyOslSpider'
 SPIDER_MODULES = ['scrapy_osl.spiders']
 NEWSPIDER_MODULE = 'scrapy_osl.spiders'
 
-ITEM_PIPELINES = ['scrapy_osl.pipelines.ScrapyOslPipeline']
+ITEM_PIPELINES = ['scrapy_osl.pipelines.conEtiquetaPipeline',
+				  'scrapy_osl.pipelines.sinEtiquetaPipeline']
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'scrapy_osl (+http://www.yourdomain.com)'
+USER_AGENT = 'scrapy_osl (http://osl.ugr)'
